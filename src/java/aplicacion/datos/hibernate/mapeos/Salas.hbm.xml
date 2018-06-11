@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2018 00:06:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.modelo.dominio.Sala" table="salas" catalog="cine" optimistic-lock="version">
+        <id name="salCodigo" type="java.lang.Integer">
+            <column name="sal_codigo" />
+            <generator class="identity" />
+        </id>
+        <property name="salNombre" type="string">
+            <column name="sal_nombre" length="45" not-null="true" />
+        </property>
+        <property name="salDescripcion" type="string">
+            <column name="sal_descripcion" length="100" not-null="true" />
+        </property>
+        <property name="salEstado" type="boolean">
+            <column name="sal_estado" not-null="true" />
+        </property>
+ 
+    </class>
+</hibernate-mapping>

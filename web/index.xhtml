@@ -14,18 +14,15 @@
                 <p:panel header="Acceso al Sistema de Cine" footer="APU 2008 - Programacion visual 2018">
                     <h:panelGrid columns="2" cellpadding="5" >
                         <p:outputLabel for="txtNombreUsuario" value="Ingrese nombre de Usuario"/>
-                        <p:inputText id="txtNombreUsuario" value=""/>
+                        <p:inputText id="txtNombreUsuario" required="true" value="#{loginFormBean.nombreUsuario}"/>
                         
                         <p:outputLabel for="txtContraseña" value="Ingrese Contraseña"/>
-                        <p:password id="txtContraseña" value="" />
+                        <p:password id="txtContraseña" required="true" value="#{loginFormBean.password}" />
                         
                         <h:panelGroup />
-                        <p:commandButton type="button" id="btnValidar" value="Validar Usuario"/>
+                        <p:commandButton id="btnValidar" value="Validar Usuario" update="frmLogin" action="#{loginFormBean.validarUsuario()}"/>
                     </h:panelGrid>
                 </p:panel>
-            </h:form>
-            <h:form>
-                <p:commandButton value="Validar Usuario" action="menu"/>
             </h:form>
         </div>
     </h:body>

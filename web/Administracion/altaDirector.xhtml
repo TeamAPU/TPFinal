@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Alta director</title>
+    </h:head>
+    <h:body>
+        <p:growl id="growl" showDetail="false" sticky="false"/>
+        
+         <ui:composition template="./../templates/template.xhtml">
+            <ui:define name="content">
+                <div id="tooplate_main">
+                    <div>
+                        <h:form id="ListaDirector">
+            <p:panel header="Director" footer="Sistema de Cine - 2018" style="width:900px;">
+                <p:dataTable id="listDirector">
+                    <p:column headerText="Apellido">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                    <p:column headerText="Nombre">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                </p:dataTable>
+                <p:commandButton value="Cargar Director" oncomplete="PF('cargarDirector').show()"/>
+            </p:panel>
+        </h:form>
+
+
+
+        <h:form>
+            <p:dialog widgetVar="cargarDirector" modal="true">
+
+
+                <p:panel header="Alta Director" footer="Sistema de Cine - 2018" style="width:600px;">
+                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
+                                 style="border:none;margin:0 auto;width:500px;">
+
+                        <p:outputLabel for="txtApellidoDir" value="Apellido:"/>
+                        <p:inputText id="txtApellidoDir" required="true"/>
+
+                        <p:outputLabel for="txtNombreDir" value="Nombre:"/>
+                        <p:inputText id="txtNombreDir"  required="true"/>
+
+                        <h:panelGroup/>
+                        <p:commandButton id="btnGuardarDir" value="Agregar Director" update=""
+                                         oncomplete="PF('cargarDirector').hide()"/>
+                    </h:panelGrid>
+                </p:panel>
+            </p:dialog>
+        </h:form>
+
+                    </div>
+                  
+                </div>
+            </ui:define>
+        </ui:composition>
+
+           </h:body>
+</html>
+

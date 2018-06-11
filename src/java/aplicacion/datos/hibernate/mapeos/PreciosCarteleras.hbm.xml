@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2018 00:06:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.modelo.dominio.PrecioCartelera" table="precios_carteleras" catalog="cine" optimistic-lock="version">
+        <id name="preCodigo" type="java.lang.Integer">
+            <column name="pre_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="carteleras" class="aplicacion.modelo.dominio.Cartelera" fetch="join">
+            <column name="pre_cartelera" not-null="true" />
+        </many-to-one>
+        <property name="preDescripcion" type="string">
+            <column name="pre_descripcion" length="100" not-null="true" />
+        </property>
+        <property name="prePrecio" type="double">
+            <column name="pre_precio" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

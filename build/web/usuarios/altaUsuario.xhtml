@@ -10,7 +10,7 @@
             <ui:define name="content">
                 <div id="tooplate_main">
                     <div>
-                        <h:form id="frmUsuario" >
+                        <h:form id="frmUsuario" rendered="#{loginFormBean.verificarSesion()}">
                             <p:growl id="mensajeGeneral" showDetail="false" sticky="false"/>
                             <p:panel header="Alta de Usuario" footer="Sistema de Cine - 2018">
                                 <h:panelGrid columns="2" cellpadding="5">

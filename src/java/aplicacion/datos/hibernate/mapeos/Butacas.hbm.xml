@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2018 00:06:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.dominio.modelo.Butaca" table="butacas" catalog="cine" optimistic-lock="version">
+        <id name="butCodigo" type="java.lang.Integer">
+            <column name="but_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="salas" class="aplicacion.dominio.modelo.Sala" fetch="join">
+            <column name="but_sala" not-null="true" />
+        </many-to-one>
+        <property name="butIdentificador" type="string">
+            <column name="but_identificador" length="10" not-null="true" />
+        </property>
+        <property name="butEstado" type="boolean">
+            <column name="but_estado" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

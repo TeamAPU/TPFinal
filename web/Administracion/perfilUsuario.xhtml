@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Perfil de Usuario</title>
+    </h:head>
+    <h:body>
+
+        <p:growl id="growl" showDetail="false" sticky="false"/>
+
+          <ui:composition template="./../templates/template.xhtml">
+            <ui:define name="content">
+                <div id="tooplate_main">
+                    <div>
+                        <h:form id="ListaUsuario">
+            <p:panel header="Usuarios" footer="Sistema de Cine - 2018" style="width:900px;">
+                <p:dataTable id="listUsuario">
+                    <p:column headerText="Nombre Usuario">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                    <p:column headerText="Nombre">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                    <p:column headerText="Apellido">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                    <p:column headerText="DNI">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                    <p:column headerText="Fecha de Nacimiento">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                    <p:column headerText="Email">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                    <p:column headerText="Direccion">
+                        <p:outputLabel value=""/>   
+                    </p:column>
+
+                    <p:column headerText="Modificar">
+                        <p:commandButton value="Editar"/>  
+                    </p:column>
+
+                </p:dataTable>
+                  <p:commandButton value="Cargar Perfil usuario cambiar a boton editar" oncomplete="PF('cargarPerfilUsuario').show()"/>
+            </p:panel>
+        </h:form>
+
+        <h:form>
+            <p:dialog widgetVar="cargarPerfilUsuario" modal="true">
+
+
+                <p:panel header="Perfil Usuario" footer="Sistema de Cine - 2018" style="width:600px;" >
+                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
+                                 style="border:none;margin:0 auto;width:500px;">
+
+                        <p:outputLabel for="txtNombrePer" value="Nombre:"/>
+                        <p:inputText id="txtNombrePer" required="true"/>
+
+                        <p:outputLabel for="txtApellidoPer" value="Apellido:"/>
+                        <p:inputText id="txtApellidoPer" required="true"/>
+
+
+                        <p:outputLabel for="txtDniPer" value="DNI:"/>
+                        <p:inputText id="txtDniPer" required="true"/>
+
+                        <p:outputLabel for="txtFechaNacPer" value="Fecha de Nacimiento:"/>
+                        <p:inputText id="txtFechaNacPer" required="true"/>
+
+                        <p:outputLabel for="txtEmailPer" value="E-mail:"/>
+                        <p:inputText id="txtEmailPer" required="true"/>
+
+                        <p:outputLabel for="txtDireccionPer" value="Direccion:"/>
+                        <p:inputText id="txtDireccionPer" required="true"/>
+
+                        <h:panelGroup/>
+                        <p:commandButton id="btnGuardarPerfil" value="Guardar Perfil" update=""
+                                         oncomplete="PF('cargarPerfilUsuario').hide()"/>
+                        
+                    </h:panelGrid>
+                </p:panel> 
+            </p:dialog>
+        </h:form>
+   
+                    </div>
+                  
+                </div>
+            </ui:define>
+        </ui:composition>
+      </h:body>  
+</html>
+
