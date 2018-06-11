@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/structure/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                
+            <h:form id="frmUsuario">
+                <p:growl id="mensajeGeneral" showDetail="false" sticky="false"></p:growl>
+                <p:panel header="Actualizacion de Datos de Usuario" footer="APU 2008">
+                    <p:panelGrid columns="2">
+                    <p:outputLabel for="txtNombre" value="Nombre de Usuario"></p:outputLabel>
+                    <p:inputText id="txtNombre" readonly="true"></p:inputText>
+ 
+                    <p:outputLabel for="txtCorreo" value="Correo"></p:outputLabel>
+                    <p:inputText id="txtCorreo" required="true" maxlength="40" size="40" value="">
+                        
+                    </p:inputText>
+                    
+                    <p:outputLabel for="txtapellido" value="Apellido:"></p:outputLabel>
+                    <p:inputText id="txtapellido" value="" maxlength="30" size="30" required="true"></p:inputText>
+                    
+                    <p:outputLabel for="txtnombres" value="Nombres"></p:outputLabel>
+                    <p:inputText id="txtnombres" value="" maxlength="30" size="30" required="true"></p:inputText>
+                    
+                    <p:outputLabel for="txtfecha" value="Fecha"></p:outputLabel>
+                    <p:calendar id="txtfecha" pattern="dd-MM-yyyy" size="10" maxlength="10" value="" required="true" locale="es"></p:calendar>
+                    
+                    <p:outputLabel for="txtPassword" value="Password"></p:outputLabel>
+                    <p:password id="txtPassword" value=""></p:password>
+                    </p:panelGrid>
+                    <p:commandButton value="Actualizar" update="frmUsuario"></p:commandButton>
+                </p:panel>
+            </h:form>   
+
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

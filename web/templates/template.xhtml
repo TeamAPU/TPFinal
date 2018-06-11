@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div id="top">
+            <ui:insert name="TOP">
+                <p:megaMenu orientation="horizontal" style="margin-top:20px">
+                    <p:menuitem value="Alta Usuario" icon="ui-icon-pencil" outcome="/usuarios/altaUsuario"/>
+                    <p:menuitem value="Alta Pelicula" icon="ui-icon-pencil" outcome="/peliculas/altaPelicula"/>
+                    <p:submenu label="Salas" icon="ui-icon-document">
+
+                        <p:column>
+                            <p:submenu label="Sala.1">
+                                <p:menuitem value="3D" url="#" />
+                                <p:menuitem value="2D" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Sala.2">
+                                <p:menuitem value="3D" url="#" />
+                                <p:menuitem value="2D" url="#" />
+                            </p:submenu>
+                        </p:column>
+
+                        <p:column>
+                            <p:submenu label="Sala.3">
+                                <p:menuitem value="3D" url="#" />
+                                <p:menuitem value="2D" url="#" />
+                            </p:submenu>
+                        </p:column>
+                    </p:submenu>
+                    
+
+                    <p:submenu label="Ventas" icon="ui-icon-contact">
+                        <p:column>
+                            <p:submenu label="Tech.1">
+                                <p:menuitem value="Tech.1.1" url="#" />
+                                <p:menuitem value="Tech.1.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Tech.2">
+                                <p:menuitem value="Tech.2.1" url="#" />
+                                <p:menuitem value="Tech.2.2" url="#" />
+                                <p:menuitem value="Tech.2.3" url="#" />
+                            </p:submenu>
+                        </p:column>
+                    </p:submenu>
+
+                    <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+                </p:megaMenu>
+            </ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    
+                </ui:insert>
+            </div>
+            <div id="content">
+                <ui:insert name="content">
+
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>
+
