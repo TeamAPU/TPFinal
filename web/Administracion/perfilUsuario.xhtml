@@ -9,93 +9,94 @@
     </h:head>
     <h:body>
 
-        <p:growl id="growl" showDetail="false" sticky="false"/>
+        <p:growl id="growl" showDetail="true" sticky="true"/>
 
-          <ui:composition template="./../templates/template.xhtml">
+        <ui:composition template="./../templates/template.xhtml">
             <ui:define name="content">
                 <div id="tooplate_main">
                     <div>
                         <h:form id="ListaUsuario">
-            <p:panel header="Usuarios" footer="Sistema de Cine - 2018" style="width:900px;">
-                <p:dataTable id="listUsuario">
-                    <p:column headerText="Nombre Usuario">
-                        <p:outputLabel value=""/>   
-                    </p:column>
+                            <p:panel header="Usuarios" footer="Sistema de Cine - 2018" style="width:900px;">
+                                <p:dataTable id="listUsuario" value="#{perfilFormBean.obtenerPerfiles()}" var="per">
+                                    <p:column headerText="Nombre Usuario">
+                                        <p:outputLabel value="#{per.usuario.nombreUsuario}"/>   
+                                    </p:column>
 
-                    <p:column headerText="Nombre">
-                        <p:outputLabel value=""/>   
-                    </p:column>
+                                    <p:column headerText="Nombre">
+                                        <p:outputLabel value="#{per.nombre}"/>   
+                                    </p:column>
 
-                    <p:column headerText="Apellido">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-
-                    <p:column headerText="DNI">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-
-                    <p:column headerText="Fecha de Nacimiento">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-
-                    <p:column headerText="Email">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-
-                    <p:column headerText="Direccion">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-
-                    <p:column headerText="Modificar">
-                        <p:commandButton value="Editar"/>  
-                    </p:column>
-
-                </p:dataTable>
-                  <p:commandButton value="Cargar Perfil usuario cambiar a boton editar" oncomplete="PF('cargarPerfilUsuario').show()"/>
-            </p:panel>
-        </h:form>
-
-        <h:form>
-            <p:dialog widgetVar="cargarPerfilUsuario" modal="true">
+                                    <p:column headerText="Apellido">
+                                        <p:outputLabel value="#{per.apellido}"/>   
+                                    </p:column>
 
 
-                <p:panel header="Perfil Usuario" footer="Sistema de Cine - 2018" style="width:600px;" >
-                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
-                                 style="border:none;margin:0 auto;width:500px;">
+                                    <p:column headerText="DNI">
+                                        <p:outputLabel value="#{per.dni}"/>   
+                                    </p:column>
 
-                        <p:outputLabel for="txtNombrePer" value="Nombre:"/>
-                        <p:inputText id="txtNombrePer" required="true"/>
+                                    <p:column headerText="Fecha de Nacimiento">
+                                        <p:outputLabel value="#{per.fechaNac}"/>   
+                                    </p:column>
 
-                        <p:outputLabel for="txtApellidoPer" value="Apellido:"/>
-                        <p:inputText id="txtApellidoPer" required="true"/>
+                                    <p:column headerText="Email">
+                                        <p:outputLabel value="#{per.email}"/>   
+                                    </p:column>
+
+                                    <p:column headerText="Direccion">
+                                        <p:outputLabel value="#{per.direccion}"/>   
+                                    </p:column>
+
+                                    <p:column headerText="Modificar">
+                                        <p:commandButton value="Editar"/>  
+                                    </p:column>
+
+                                </p:dataTable>
+                                <p:commandButton value="Cargar Perfil usuario cambiar a boton editar" oncomplete="PF('cargarPerfilUsuario').show()"/>
+                            </p:panel>
+                        </h:form>
+
+                        <h:form>
+                            <p:dialog widgetVar="cargarPerfilUsuario" modal="true">
 
 
-                        <p:outputLabel for="txtDniPer" value="DNI:"/>
-                        <p:inputText id="txtDniPer" required="true"/>
+                                <p:panel header="Perfil Usuario" footer="Sistema de Cine - 2018" style="width:600px;" >
+                                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
+                                                 style="border:none;margin:0 auto;width:500px;">
 
-                        <p:outputLabel for="txtFechaNacPer" value="Fecha de Nacimiento:"/>
-                        <p:inputText id="txtFechaNacPer" required="true"/>
+                                        <p:outputLabel for="txtNombrePer" value="Nombre:"/>
+                                        <p:inputText id="txtNombrePer" required="true"/>
 
-                        <p:outputLabel for="txtEmailPer" value="E-mail:"/>
-                        <p:inputText id="txtEmailPer" required="true"/>
+                                        <p:outputLabel for="txtApellidoPer" value="Apellido:"/>
+                                        <p:inputText id="txtApellidoPer" required="true"/>
 
-                        <p:outputLabel for="txtDireccionPer" value="Direccion:"/>
-                        <p:inputText id="txtDireccionPer" required="true"/>
 
-                        <h:panelGroup/>
-                        <p:commandButton id="btnGuardarPerfil" value="Guardar Perfil" update=""
-                                         oncomplete="PF('cargarPerfilUsuario').hide()"/>
-                        
-                    </h:panelGrid>
-                </p:panel> 
-            </p:dialog>
-        </h:form>
-   
+                                        <p:outputLabel for="txtDniPer" value="DNI:"/>
+                                        <p:inputText id="txtDniPer" required="true"/>
+
+                                        <p:outputLabel for="txtFechaNacPer" value="Fecha de Nacimiento:"/>
+                                        <p:inputText id="txtFechaNacPer" required="true"/>
+
+                                        <p:outputLabel for="txtEmailPer" value="E-mail:"/>
+                                        <p:inputText id="txtEmailPer" required="true"/>
+
+                                        <p:outputLabel for="txtDireccionPer" value="Direccion:"/>
+                                        <p:inputText id="txtDireccionPer" required="true"/>
+
+                                        <h:panelGroup/>
+                                        <p:commandButton id="btnGuardarPerfil" value="Guardar Perfil" update=""
+                                                         oncomplete="PF('cargarPerfilUsuario').hide()"/>
+
+                                    </h:panelGrid>
+                                </p:panel> 
+                            </p:dialog>
+                        </h:form>
+
                     </div>
-                  
+
                 </div>
             </ui:define>
         </ui:composition>
-      </h:body>  
+    </h:body>  
 </html>
 

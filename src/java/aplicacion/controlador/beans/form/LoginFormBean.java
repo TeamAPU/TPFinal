@@ -27,13 +27,12 @@ public class LoginFormBean {
         IUsuarioDAO usuarioDAO = new UsuarioDAOImp();
         Usuario usuario = usuarioDAO.validarUsuario(nombreUsuario, password);
         if (usuario != null) {
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario valido", "Usuario valido");
-            FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValidado", usuario);
             resultado = "menu?faces-redirect=true";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", "Bienvenido");
+            FacesContext.getCurrentInstance().addMessage(null, facesMessage);
         } else {
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Credenciales Invalidas", "Credenciales invalidas");
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario Invalido", "Usuario Invalido");
             FacesContext.getCurrentInstance().addMessage(null, facesMessage);
         }
         return resultado;
@@ -51,11 +50,20 @@ public class LoginFormBean {
         }
         return sesionValida;
     }
+    
+    public boolean verificarSesionUsuarioFinal() {
+        boolean sesionValida = false;
+        Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValidado");
+        if (usuario.getTipoUsuario().equals("Final")) {
+            sesionValida = true;
+        }
+        return sesionValida;
+    }
 
     public String cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
-        FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sesion Cerrada", "Sesion Cerrada");
+        FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cerrando Sesión", "Cerrando Sesión");
         FacesContext.getCurrentInstance().addMessage(null, facesMessage);
 
         String resultado = "/index?faces-redirect=true";

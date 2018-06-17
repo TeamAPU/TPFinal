@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class catalog="cine" name="aplicacion.modelo.dominio.Usuario" table="usuarios">
-        <id name="codigo" type="integer">
-            <column length="8" name="usu_codigo"/>
-            <generator class="assigned"/>
-        </id>
-        <property name="nombreUsuario" type="string">
-            <column length="20" name="usu_nombre_usuario" not-null="true"/>
-        </property>
-        <property name="password" type="string">
-            <column length="8" name="usu_password" not-null="true"/>
-        </property>
-        <property name="tipoUsuario" type="string">
-            <column length="20" name="usu_tipo_usuario" not-null="true"/>
-        </property>
-        <property name="estado" type="boolean">
-            <column name="usu_estado" not-null="true"/>
-        </property>
-    </class>
+  <class catalog="cine" name="aplicacion.modelo.dominio.Usuario" optimistic-lock="version" table="usuarios">
+    <id name="codigo" type="java.lang.Integer">
+      <column name="usu_codigo"/>
+      <generator class="increment"/>
+    </id>
+    <property name="nombreUsuario" type="string">
+      <column length="10" name="usu_nombre_usuario" not-null="true" unique="true"/>
+    </property>
+    <property name="password" type="string">
+      <column name="usu_password" not-null="true"/>
+    </property>
+    <property name="tipoUsuario" type="string">
+      <column length="15" name="usu_tipo_usuario" not-null="true"/>
+    </property>
+    <property name="estado" type="boolean">
+      <column name="usu_estado" not-null="true"/>
+    </property>
+  </class>
 </hibernate-mapping>

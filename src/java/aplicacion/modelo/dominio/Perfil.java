@@ -1,160 +1,92 @@
 package aplicacion.modelo.dominio;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Perfil implements Serializable{
+public class Perfil implements java.io.Serializable {
 
-    private Integer perCodigo;
+    private Integer codigo;
     private Usuario usuario;
-    private String perNombres;
-    private String perApellidos;
-    private String perDni;
-    private Date perFechaNac;
-    private String perEmail;
-    private String perDireccion;
-    private boolean perEstado;
+    private String nombre;
+    private String apellido;
+    private String dni;
+    private Date fechaNac;
+    private String email;
+    private String direccion;
+    private boolean estado;
 
     public Perfil() {
     }
 
-    public Perfil(Integer perCodigo, Usuario usuarios, String perNombres, String perApellidos, String perDni, Date perFechaNac, String perEmail, String perDireccion, boolean perEstado) {
-        this.perCodigo = perCodigo;
-        this.usuario = usuarios;
-        this.perNombres = perNombres;
-        this.perApellidos = perApellidos;
-        this.perDni = perDni;
-        this.perFechaNac = perFechaNac;
-        this.perEmail = perEmail;
-        this.perDireccion = perDireccion;
-        this.perEstado = perEstado;
+    public Integer getCodigo() {
+        return this.codigo;
     }
 
-    /**
-     * @return the perCodigo
-     */
-    public Integer getPerCodigo() {
-        return perCodigo;
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
-    /**
-     * @param perCodigo the perCodigo to set
-     */
-    public void setPerCodigo(Integer perCodigo) {
-        this.perCodigo = perCodigo;
+    public Usuario getUsuario() {
+        return this.usuario;
     }
 
-    /**
-     * @return the usuarios
-     */
-    public Usuario getUsuarios() {
-        return usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    /**
-     * @param usuarios the usuarios to set
-     */
-    public void setUsuarios(Usuario usuarios) {
-        this.usuario = usuarios;
+    public String getNombre() {
+        return this.nombre;
     }
 
-    /**
-     * @return the perNombres
-     */
-    public String getPerNombres() {
-        return perNombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    /**
-     * @param perNombres the perNombres to set
-     */
-    public void setPerNombres(String perNombres) {
-        this.perNombres = perNombres;
+    public String getApellido() {
+        return this.apellido;
     }
 
-    /**
-     * @return the perApellidos
-     */
-    public String getPerApellidos() {
-        return perApellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    /**
-     * @param perApellidos the perApellidos to set
-     */
-    public void setPerApellidos(String perApellidos) {
-        this.perApellidos = perApellidos;
+    public String getDni() {
+        return this.dni;
     }
 
-    /**
-     * @return the perDni
-     */
-    public String getPerDni() {
-        return perDni;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
-    /**
-     * @param perDni the perDni to set
-     */
-    public void setPerDni(String perDni) {
-        this.perDni = perDni;
+    public Date getFechaNac() {
+        return this.fechaNac;
     }
 
-    /**
-     * @return the perFechaNac
-     */
-    public Date getPerFechaNac() {
-        return perFechaNac;
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
     }
 
-    /**
-     * @param perFechaNac the perFechaNac to set
-     */
-    public void setPerFechaNac(Date perFechaNac) {
-        this.perFechaNac = perFechaNac;
+    public String getEmail() {
+        return this.email;
     }
 
-    /**
-     * @return the perEmail
-     */
-    public String getPerEmail() {
-        return perEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    /**
-     * @param perEmail the perEmail to set
-     */
-    public void setPerEmail(String perEmail) {
-        this.perEmail = perEmail;
+    public String getDireccion() {
+        return this.direccion;
     }
 
-    /**
-     * @return the perDireccion
-     */
-    public String getPerDireccion() {
-        return perDireccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    /**
-     * @param perDireccion the perDireccion to set
-     */
-    public void setPerDireccion(String perDireccion) {
-        this.perDireccion = perDireccion;
+    public boolean isEstado() {
+        return this.estado;
     }
 
-    /**
-     * @return the perEstado
-     */
-    public boolean isPerEstado() {
-        return perEstado;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
-    /**
-     * @param perEstado the perEstado to set
-     */
-    public void setPerEstado(boolean perEstado) {
-        this.perEstado = perEstado;
-    }
-    
-    
 }

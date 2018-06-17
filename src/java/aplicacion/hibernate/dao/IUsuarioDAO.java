@@ -2,10 +2,6 @@ package aplicacion.hibernate.dao;
 
 import aplicacion.modelo.dominio.Usuario;
 
-/**
- *
- * @author win7
- */
 public interface IUsuarioDAO {
 
     /**
@@ -20,4 +16,7 @@ public interface IUsuarioDAO {
     void modificar(Usuario unUsuario);
 
     Usuario obtenerUsuario(String nombreUsuario);
+    
+    void agregar(Usuario usuario);
+    
 }

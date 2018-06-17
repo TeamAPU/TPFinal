@@ -7,16 +7,12 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-/**
- *
- * @author win7
- */
 public class UsuarioDAOImp implements IUsuarioDAO {
 
     @Override
     public Usuario validarUsuario(String nombreUsuario, String password) {
         Usuario usuario = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSESSION_FACTORY().openSession();
         Criteria criteria = session.createCriteria(Usuario.class);
         criteria.add(Restrictions.eq("nombreUsuario", nombreUsuario));
         criteria.add(Restrictions.eq("password", password));
@@ -29,7 +25,7 @@ public class UsuarioDAOImp implements IUsuarioDAO {
 
     @Override
     public void modificar(Usuario unUsuario) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSESSION_FACTORY().openSession();
         session.beginTransaction();
         session.update(unUsuario);
         session.getTransaction().commit();
@@ -39,13 +35,22 @@ public class UsuarioDAOImp implements IUsuarioDAO {
     @Override
     public Usuario obtenerUsuario(String nombreUsuario) {
         Usuario usuario = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSESSION_FACTORY().openSession();
         Criteria criteria = session.createCriteria(Usuario.class);
         criteria.add(Restrictions.eq("nombreUsuario", nombreUsuario));
         if (!criteria.list().isEmpty()) {
             usuario = (Usuario) criteria.list().get(0);
         }
         return usuario;
+    }
+
+    @Override
+    public void agregar(Usuario usuario) {
+        Session session = HibernateUtil.getSESSION_FACTORY().openSession();
+        session.beginTransaction();
+        session.save(usuario);
+        session.getTransaction().commit();
+        session.close();
     }
 
 }

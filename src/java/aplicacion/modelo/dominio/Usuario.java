@@ -1,8 +1,6 @@
 package aplicacion.modelo.dominio;
 
-import java.io.Serializable;
-
-public class Usuario implements Serializable {
+public class Usuario implements java.io.Serializable {
 
     private Integer codigo;
     private String nombreUsuario;
@@ -13,16 +11,8 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(Integer codigo, String nombreUsuario, String password, String tipoUsuario, boolean estado) {
-        this.codigo = codigo;
-        this.nombreUsuario = nombreUsuario;
-        this.password = password;
-        this.tipoUsuario = tipoUsuario;
-        this.estado = estado;
-    }
-
     public Integer getCodigo() {
-        return codigo;
+        return this.codigo;
     }
 
     public void setCodigo(Integer codigo) {
@@ -30,7 +20,7 @@ public class Usuario implements Serializable {
     }
 
     public String getNombreUsuario() {
-        return nombreUsuario;
+        return this.nombreUsuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
@@ -38,7 +28,7 @@ public class Usuario implements Serializable {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
@@ -46,7 +36,7 @@ public class Usuario implements Serializable {
     }
 
     public String getTipoUsuario() {
-        return tipoUsuario;
+        return this.tipoUsuario;
     }
 
     public void setTipoUsuario(String tipoUsuario) {
@@ -54,7 +44,7 @@ public class Usuario implements Serializable {
     }
 
     public boolean isEstado() {
-        return estado;
+        return this.estado;
     }
 
     public void setEstado(boolean estado) {

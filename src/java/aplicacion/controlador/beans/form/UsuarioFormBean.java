@@ -6,24 +6,21 @@ import aplicacion.hibernate.dao.imp.UsuarioDAOImp;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author win7
- */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class UsuarioFormBean {
 
     @ManagedProperty(value = "#{usuarioBean}")
     private UsuarioBean usuarioBean;
 
     public UsuarioFormBean() {
+        usuarioBean = new UsuarioBean();
     }
 
-    public void actualizarDatos() {
+    public void modificarUsuario() {
         usuarioBean.getUsuario().setEstado(true);
         IUsuarioDAO usuarioDAO = new UsuarioDAOImp();
         usuarioDAO.modificar(usuarioBean.getUsuario());
@@ -38,4 +35,5 @@ public class UsuarioFormBean {
     public void setUsuarioBean(UsuarioBean usuarioBean) {
         this.usuarioBean = usuarioBean;
     }
+    
 }

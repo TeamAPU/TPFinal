@@ -17,6 +17,8 @@ public class Clasificacion implements Serializable {
         this.claEstado = claEstado;
     }
 
+  
+    
     /**
      * @return the claCodigo
      */

@@ -26,7 +26,7 @@
                         <h:form rendered="#{loginFormBean.verificarSesion()}">
                             <p:megaMenu orientation="horizontal" style="margin-top:20px">
                                 <p:menuitem value="Alta Usuario" icon="ui-icon-pencil" outcome="/usuarios/altaUsuario"/>
-                               
+
                                 <p:submenu label="Salas" icon="ui-icon-document">
 
                                     <p:column>
@@ -56,7 +56,7 @@
 
                                     <p:column>
                                         <p:submenu label="Cartelera">
-                                            <p:menuitem value="Cartelera"  />
+                                            <p:menuitem value="Cartelera"  outcome="/Cartelera/Cartelera"/>
 
                                         </p:submenu>
 
@@ -64,14 +64,14 @@
 
 
                                 </p:submenu>
-                                <p:submenu label="Administrar" icon="ui-icon-contact">
+                                <p:submenu label="Administrar" icon="ui-icon-contact" rendered="#{loginFormBean.verificarSesionUsuarioFinal() eq false}">
                                     <p:column>
                                         <p:submenu >
                                             <p:menuitem value="Usuarios" outcome="/Administracion/perfilUsuario" />
                                             <p:menuitem value="Peliculas" outcome="/Administracion/altaPelicula" />
                                             <p:menuitem value="Director" outcome="/Administracion/altaDirector" />
                                             <p:menuitem value="Clasificación" outcome="/Administracion/altaClasificacion" />
-
+                                            <p:menuitem value="Cartelera"  outcome="/Administracion/altaCartelera"/>
                                         </p:submenu>
 
                                     </p:column>

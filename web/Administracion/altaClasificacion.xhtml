@@ -8,56 +8,58 @@
         <title>Alta Clasificacion</title>
     </h:head>
     <h:body>
+
         
-         <p:growl id="growl" showDetail="false" sticky="false"/>
-           <ui:composition template="./../templates/template.xhtml">
+        <ui:composition template="./../templates/template.xhtml">
             <ui:define name="content">
                 <div id="tooplate_main">
                     <div>
-                        <h:form id="ListaClasificacion">
-            <p:panel header="Clasificación" footer="Sistema de Cine - 2018" style="width:900px;">
-                <p:dataTable id="listClasificacion">
-                    
-                    <p:column headerText="Codigo">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-                    
-                    <p:column headerText="Clasificación">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-                    
-                </p:dataTable>
-                <p:commandButton value="Cargar Clasificación" oncomplete="PF('cargarClasificacion').show()"/>
-            </p:panel>
-        </h:form>
-        
-        <h:form>
-            <p:dialog widgetVar="cargarClasificacion" modal="true">
-                
-           
-            <p:panel header="Alta Clasificación" footer="Sistema de Cine - 2018" style="width:600px;">
-                <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
-                             style="border:none;margin:0 auto;width:500px;">
+                        <h:form id="ListaClasificacion" >
+                            <p:panel header="Clasificación" footer="Sistema de Cine - 2018" style="width:900px;">
+                                <p:dataTable id="listClasificacion">
 
-                    <p:outputLabel for="txtDescripcion" value="Descripción:"/>
-                    <p:inputText id="txtDescripcion" required="true"/>
+                                    <p:column headerText="Codigo">
+                                        <p:outputLabel value=""/>   
+                                    </p:column>
+
+                                    <p:column headerText="Clasificación">
+                                        <p:outputLabel value=""/>   
+                                    </p:column>
+
+                                </p:dataTable>
+                                <p:commandButton value="Cargar Clasificación" oncomplete="PF('cargarClasificacion').show()"/>
+                            </p:panel>
+                        </h:form>
+
+                        <h:form id="cargaClasificacion" >
+                            <p:growl id="growl" showDetail="true" sticky="false"/>
+                            <p:dialog widgetVar="cargarClasificacion" modal="true">
 
 
+                                <p:panel header="Alta Clasificación" footer="Sistema de Cine - 2018" style="width:600px;">
+                                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
+                                                 style="border:none;margin:0 auto;width:500px;">
 
-                    <h:panelGroup/>
-                    <p:commandButton id="btnGuardarDes" value="Agregar Descripción" update=""
-                                     oncomplete="PF('cargarClasificacion').hide()"/>
-                </h:panelGrid>
-            </p:panel> 
-            </p:dialog>
-        </h:form>
+                                        <p:outputLabel for="txtDescripcion" value="Descripción:"/>
+                                        <p:inputText id="txtDescripcion" required="true" value="#{clasificacionFormBean.clasificacionBean.clasificacion.claDescripcion}"/>
+
+
+
+                                        <h:panelGroup/>
+                                        <p:commandButton id="btnGuardarDes" value="Agregar Descripción" update=":cargaClasificacion:growl"
+                                                         oncomplete="PF('cargarClasificacion').hide()"
+                                                         actionListener="#{clasificacionFormBean.agregarClasificacion()}"/>
+                                    </h:panelGrid>
+                                </p:panel> 
+                            </p:dialog>
+                        </h:form>
                     </div>
-                  
+
                 </div>
             </ui:define>
         </ui:composition>
-         
-         
+
+
     </h:body>
 </html>
 

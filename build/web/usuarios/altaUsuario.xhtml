@@ -11,20 +11,36 @@
                 <div id="tooplate_main">
                     <div>
                         <h:form id="frmUsuario" rendered="#{loginFormBean.verificarSesion()}">
-                            <p:growl id="mensajeGeneral" showDetail="false" sticky="false"/>
+                            <p:growl id="mensajeGeneral" showDetail="true" sticky="false" autoUpdate="true"/>
                             <p:panel header="Alta de Usuario" footer="Sistema de Cine - 2018">
                                 <h:panelGrid columns="2" cellpadding="5">
                                     <p:outputLabel for="txtNombre" value="Nombre de usuario:"/>
-                                    <p:inputText id="txtNombre" required="true"/>
+                                    <p:inputText id="txtNombre" required="true" value="#{perfilFormBean.usuarioBean.usuario.nombreUsuario}"/>
                                     
                                     <p:outputLabel for="txtPassword" value="Password:"/>
-                                    <p:password id="txtPassword" maxlength="8" required="true"/>
+                                    <p:password id="txtPassword" maxlength="8" required="true" value="#{perfilFormBean.usuarioBean.usuario.password}"/>
                                     
-                                    <p:outputLabel for="txtTipoUsuario" value="Tipo de Usuario:"/>
-                                    <p:inputText id="txtTipoUsuario" maxlength="20" size="20" required="true"/>
-
+                                    <p:outputLabel for="txtNombrePerfil" value="Nombre Perfil:"/>
+                                    <p:inputText id="txtNombrePerfil" required="true" value="#{perfilFormBean.perfilBean.perfil.nombre}"/>
+                                    
+                                    <p:outputLabel for="txtApellidoPerfil" value="Apellido Perfil:"/>
+                                    <p:inputText id="txtApellidoPerfil" required="true" value="#{perfilFormBean.perfilBean.perfil.apellido}"/>
+                                    
+                                    <p:outputLabel for="txtDniPerfil" value="DNI Perfil:"/>
+                                    <p:inputText id="txtDniPerfil" required="true" value="#{perfilFormBean.perfilBean.perfil.dni}"/>
+                                    
+                                    <p:outputLabel for="txtFechaNac" value="FechaNac Perfil:"/>
+                                    <p:calendar id="txtFechaNac" pattern="dd-MM-yyyy" required="true" mask="true"
+                                                size="10" maxlength="10" locale="es" value="#{perfilFormBean.perfilBean.perfil.fechaNac}"/>
+                                    
+                                    <p:outputLabel for="txtEmailPerfil" value="Email Perfil:"/>
+                                    <p:inputText id="txtEmailPerfil" required="true" value="#{perfilFormBean.perfilBean.perfil.email}"/>
+                                    
+                                    <p:outputLabel for="txtDireccionPerfil" value="Direccion Perfil:"/>
+                                    <p:inputText id="txtDireccionPerfil" required="true" value="#{perfilFormBean.perfilBean.perfil.direccion}"/>
+                                    
                                     <h:panelGroup/>
-                                    <p:commandButton id="btnGuardar" value="Agregar Usuario" update="frmUsuario"/>
+                                    <p:commandButton id="btnGuardar" value="Agregar Usuario" update=":frmUsuario:mensajeGeneral" actionListener="#{perfilFormBean.agregarPerfil(perfilFormBean.perfilBean.perfil)}"/>
                                 </h:panelGrid>
                             </p:panel>
                         </h:form>

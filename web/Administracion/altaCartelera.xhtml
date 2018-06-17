@@ -11,89 +11,89 @@
     <h:body>
 
         <p:growl id="growl" showDetail="false" sticky="false"/>
-        
-          <ui:composition template="./../templates/template.xhtml">
+
+        <ui:composition template="./../templates/template.xhtml">
             <ui:define name="content">
                 <div id="tooplate_main">
                     <div>
                         <h:form id="ListaCartelera">
-            <p:panel header="Cartelera" footer="Sistema de Cine - 2018" style="width:900px;">
-                <p:dataTable id="listCartelera">
-                    <p:column headerText="Fecha">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-                    
-                    <p:column headerText="Horario">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-                    
-                    <p:column headerText="Pelicula">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-                    
-                   <p:column headerText="Sala">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-                    
-                    <p:column headerText="Precio">
-                        <p:outputLabel value=""/>   
-                    </p:column>
-                    
-                     <p:column headerText="Modificar">
-                        <p:commandButton value="Editar"/>  
-                    </p:column>
-                    
-                </p:dataTable>
-                <p:commandButton value="Cargar Cartelera" oncomplete="PF('cargarCartelera').show()"/>
-            </p:panel>
-        </h:form>
-        
-        <h:form>
-            <p:dialog widgetVar="cargarCartelera" modal="true">
-                
-           
-            <p:panel header="Alta Cartelera" footer="Sistema de Cine - 2018" style="width:600px;">
-                <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
-                             style="border:none;margin:0 auto;width:500px;">
+                            <p:panel header="Cartelera" footer="Sistema de Cine - 2018" style="width:900px;">
+                                <p:dataTable id="listCartelera" value="#{carteleraFormBean.obtenerCarteleras()}" var="c">
+                                    <p:column headerText="Fecha">
+                                        <p:outputLabel value="#{c.carFecha}"/>   
+                                    </p:column>
 
-                    <p:outputLabel value="Fecha:"/>
-                    <p:inputText id="txtFecha" />
+                                    <p:column headerText="Horario">
+                                        <p:outputLabel value="#{c.carHorario}"/>   
+                                    </p:column>
 
-                    <p:outputLabel for="txtHorario" value="Horario:"/>
-                    <p:inputText id="txtHorario" required="true"/>
+                                    <p:column headerText="Pelicula">
+                                        <p:outputLabel value="#{c.peliculas.pelNombre}"/>   
+                                    </p:column>
 
-                    <p:outputLabel for="txtPrecio" value="Precio:"/>
-                    <p:inputText id="txtPrecio" required="true"/>
+                                    <p:column headerText="Sala">
+                                        <p:outputLabel value="#{c.salas.salNombre}"/>   
+                                    </p:column>
 
-                    <p:outputLabel  value="Sala:"/>
-                    <p:selectOneMenu>
-                        <f:selectItem itemValue="Sala 1" itemLabel="Sala1"/> 
-                    </p:selectOneMenu>
+                                    <p:column headerText="Precio">
+                                        <p:outputLabel value="#{c.carPrecio}"/>   
+                                    </p:column>
+
+                                    <p:column headerText="Modificar">
+                                        <p:commandButton value="Editar"/>  
+                                    </p:column>
+
+                                </p:dataTable>
+                                <p:commandButton value="Cargar Cartelera" oncomplete="PF('cargarCartelera').show()"/>
+                            </p:panel>
+                        </h:form>
+
+                        <h:form>
+                            <p:dialog widgetVar="cargarCartelera" modal="true">
 
 
-                    <p:outputLabel  value="Pelicula:"/>
-                    <p:selectOneMenu>
-                        <f:selectItem itemValue="Pelicula 1" itemLabel="Pelicula1"/> 
-                    </p:selectOneMenu>
+                                <p:panel header="Alta Cartelera" footer="Sistema de Cine - 2018" style="width:600px;">
+                                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
+                                                 style="border:none;margin:0 auto;width:500px;">
 
-                    <p:outputLabel for="txtPrecioCar" value="Precio:"/>
-                    <p:inputText id="txtPrecioCar" required="true"/>
+                                        <p:outputLabel value="Fecha:"/>
+                                        <p:inputText id="txtFecha" />
+
+                                        <p:outputLabel for="txtHorario" value="Horario:"/>
+                                        <p:inputText id="txtHorario" required="true"/>
+
+                                        <p:outputLabel for="txtPrecio" value="Precio:"/>
+                                        <p:inputText id="txtPrecio" required="true"/>
+
+                                        <p:outputLabel  value="Sala:"/>
+                                        <p:selectOneMenu>
+                                            <f:selectItem itemValue="Sala 1" itemLabel="Sala1"/> 
+                                        </p:selectOneMenu>
+
+
+                                        <p:outputLabel  value="Pelicula:"/>
+                                        <p:selectOneMenu>
+                                            <f:selectItem itemValue="Pelicula 1" itemLabel="Pelicula1"/> 
+                                        </p:selectOneMenu>
+
+                                        <p:outputLabel for="txtPrecioCar" value="Precio:"/>
+                                        <p:inputText id="txtPrecioCar" required="true"/>
 
 
 
-                    <h:panelGroup/>
-                    <p:commandButton id="btnGuardarDir" value="Agregar Cartelera" update=""
-                                     oncomplete="PF('cargarCartelera').hide()"/>
-                </h:panelGrid>
-            </p:panel> 
-            </p:dialog>
-        </h:form>
+                                        <h:panelGroup/>
+                                        <p:commandButton id="btnGuardarDir" value="Agregar Cartelera" update=""
+                                                         oncomplete="PF('cargarCartelera').hide()"/>
+                                    </h:panelGrid>
+                                </p:panel> 
+                            </p:dialog>
+                        </h:form>
                     </div>
-                  
+
                 </div>
             </ui:define>
         </ui:composition>
-         
+
     </h:body>
 </html>
 

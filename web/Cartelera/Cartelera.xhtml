@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Cartelera</title>
+    </h:head>
+    <h:body>
+        <p:growl id="growl" showDetail="false" sticky="false"/>
+
+        <ui:composition template="./../templates/template.xhtml">
+            <ui:define name="content">
+                <div id="tooplate_main">
+                    <div>
+
+                        <p:panelGrid >
+                            <p:column style="width: 310px">
+                                <p:panel id="salas" header="Salas" toggleable="true">
+                                    <h:panelGrid columns="1" cellpadding="1">
+                                        <p:commandButton value="Sala 1"/>
+                                        <p:commandButton value="Sala 2"/>
+                                        <p:commandButton value="Sala 3"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                                <p:panel id="horario" header="Horario" toggleable="true">
+                                    <h:panelGrid columns="1" cellpadding="1">
+
+
+                                        <h:panelGrid columns="1" style="margin-bottom: 10px">
+                                            <h:outputText id="displayRange" value="Deste 0hs hasta 24hs" />
+                                            <p:slider for="txt6,txt7" display="displayRange" style="width: 250px" range="true" displayTemplate="Desde {min}hs hasta {max}hs" minValue="0" maxValue="24"/>
+                                        </h:panelGrid>
+                                        <h:inputHidden id="txt6" value="1" />
+                                        <h:inputHidden id="txt7" value="24" />
+                                    </h:panelGrid>
+                                </p:panel>
+                                <p:panel id="Dia" header="Dia" toggleable="true">
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <p:calendar/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:column>
+
+                            <p:column>
+
+                                <h:form id="ListaCartelera">
+                                    <p:panel header="Cartelera" footer="Sistema de Cine - 2018" style="width:900px;">
+                                        <p:dataTable id="listCartelera" value="#{carteleraFormBean.obtenerCarteleras()}" var="c">
+                                            <p:column headerText="Fecha">
+                                                <p:outputLabel value="#{c.carFecha}"/>   
+                                            </p:column>
+
+                                            <p:column headerText="Horario">
+                                                <p:outputLabel value="#{c.carHorario}"/>   
+                                            </p:column>
+
+                                            <p:column headerText="Pelicula">
+                                                <p:outputLabel value="#{c.peliculas.pelNombre}"/>   
+                                            </p:column>
+
+                                            <p:column headerText="Sala">
+                                                <p:outputLabel value="#{c.salas.salNombre}"/>   
+                                            </p:column>
+
+                                            <p:column headerText="Precio">
+                                                <p:outputLabel value="#{c.carPrecio}"/>   
+                                            </p:column>
+
+                                        </p:dataTable>
+
+                                    </p:panel>
+                                </h:form>
+
+                            </p:column>
+                        </p:panelGrid>
+
+
+
+
+
+                    </div>
+
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

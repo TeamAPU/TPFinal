@@ -6,7 +6,7 @@
     <class name="aplicacion.modelo.dominio.Cartelera" table="carteleras" catalog="cine" optimistic-lock="version">
         <id name="carCodigo" type="java.lang.Integer">
             <column name="car_codigo" />
-            <generator class="identity" />
+            <generator class="increment"/>
         </id>
         <many-to-one name="peliculas" class="aplicacion.modelo.dominio.Pelicula" fetch="join">
             <column name="car_pelicula" not-null="true" />
