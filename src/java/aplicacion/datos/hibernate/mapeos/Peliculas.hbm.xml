@@ -6,7 +6,7 @@
     <class name="aplicacion.modelo.dominio.Pelicula" table="peliculas" catalog="cine" optimistic-lock="version">
         <id name="pelCodigo" type="java.lang.Integer">
             <column name="pel_codigo" />
-            <generator class="identity" />
+            <generator class="increment" />
         </id>
         <property name="pelNombre" type="string">
             <column name="pel_nombre" length="50" not-null="true" />

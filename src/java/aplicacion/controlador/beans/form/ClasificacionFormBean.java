@@ -10,11 +10,14 @@ import aplicacion.hibernate.dao.IClasificacionDAO;
 import aplicacion.hibernate.dao.imp.ClasificacionDAOImp;
 import aplicacion.modelo.dominio.Clasificacion;
 import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -26,6 +29,8 @@ public class ClasificacionFormBean implements Serializable{
 
     @ManagedProperty(value = "#{clasificacionBean}")
     private ClasificacionBean clasificacionBean;
+    private List<Clasificacion> clasificaciones;
+    private String descrip;
    
 
     /**
@@ -34,6 +39,11 @@ public class ClasificacionFormBean implements Serializable{
     public ClasificacionFormBean() {
         clasificacionBean = new ClasificacionBean();
         
+    }
+    
+    @PostConstruct
+    public void init() {
+        generarClasificaciones();
     }
 
     public void agregarClasificacion() {
@@ -52,22 +62,60 @@ public class ClasificacionFormBean implements Serializable{
             FacesContext.getCurrentInstance().addMessage(null, facesmessage);
             System.out.println("No agregado");
         }
+        generarClasificaciones();
+    }
+    
+    public void asignarClasificacion(Clasificacion clasificacion) {
+       clasificacionBean.setClasificacion(clasificacion);
+       clasificacionBean.getClasificacion().setClaDescripcion(descrip);
+       modificarClasificacion();
     }
 
     public void modificarClasificacion() {
-        clasificacionBean.getClasificacion().setClaEstado(true);
-        IClasificacionDAO clasificacionDAO = new ClasificacionDAOImp();
-        clasificacionDAO.modificar(clasificacionBean.getClasificacion());
-        FacesMessage facesmessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos actualizados", "Datos Actualizados");
-        FacesContext.getCurrentInstance().addMessage(null, facesmessage);
+         try {
+            
+            clasificacionBean.modificar();
+            FacesMessage facesmessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Pelicula Modificada", "Pelicula Modificada");
+            FacesContext.getCurrentInstance().addMessage(null, facesmessage);
+            
+        } catch (Exception e) {
+            
+            FacesMessage facesmessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar", "Error al modificar");
+            FacesContext.getCurrentInstance().addMessage(null, facesmessage);
+            
+        }
+        generarClasificaciones();
     }
 
+    public void generarClasificaciones() {
+        
+        clasificaciones = clasificacionBean.obtenerClasificacion();
+    }
+    
+  
+    
     public ClasificacionBean getClasificacionBean() {
         return clasificacionBean;
     }
 
     public void setClasificacionBean(ClasificacionBean clasificacionBean) {
         this.clasificacionBean = clasificacionBean;
+    }
+
+    public List<Clasificacion> getClasificaciones() {
+        return clasificaciones;
+    }
+
+    public void setClasificaciones(List<Clasificacion> clasificaciones) {
+        this.clasificaciones = clasificaciones;
+    }
+
+    public String getDescrip() {
+        return descrip;
+    }
+
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
     }
 
    

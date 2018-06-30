@@ -48,5 +48,10 @@ Contributor(s):
     <property name="hibernate.connection.password">root</property>
     <mapping resource="aplicacion/datos/hibernate/mapeos/Perfiles.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/Usuarios.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Clasificaciones.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Directores.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Peliculas.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Carteleras.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Salas.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

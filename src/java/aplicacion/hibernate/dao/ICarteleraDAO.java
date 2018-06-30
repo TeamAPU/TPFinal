@@ -5,7 +5,6 @@
  */
 package aplicacion.hibernate.dao;
 
-
 import aplicacion.modelo.dominio.Cartelera;
 import java.util.List;
 
@@ -14,7 +13,9 @@ import java.util.List;
  * @author Ma Ry Youkai
  */
 public interface ICarteleraDAO {
-    
-     public List<Cartelera> obtenerTodos();
-    
+
+    List<Cartelera> obtenerTodos();
+
+    void agregar(Cartelera cartelera);
+
 }

@@ -29,4 +29,13 @@ public class CarteleraDAOImp implements ICarteleraDAO, Serializable {
         return carteleras;
     }
 
+    @Override
+    public void agregar(Cartelera cartelera) {
+        Session session = HibernateUtil.getSESSION_FACTORY().openSession();
+        session.beginTransaction();
+        session.save(cartelera);
+        session.getTransaction().commit();
+        session.close();
+    }
+
 }

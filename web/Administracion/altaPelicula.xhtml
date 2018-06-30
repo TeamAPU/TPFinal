@@ -17,25 +17,22 @@
                     <div>
                         <h:form id="ListaPeliculas">
                             <p:panel header="Peliculas" footer="Sistema de Cine - 2018" style="width:900px;">
-                                <p:dataTable id="listPeliculas">
+                                <p:dataTable id="listPeliculas" value="#{peliculaFormBean.peliculas}"
+                                             var="p">
                                     <p:column headerText="Nombre">
-                                        <p:outputLabel value=""/>   
+                                        <p:outputLabel value="#{p.pelNombre}"/>   
                                     </p:column>
 
                                     <p:column headerText="Descripción">
-                                        <p:outputLabel value=""/>   
+                                        <p:outputLabel value="#{p.pelDescripcion}"/>   
                                     </p:column>
 
-                                    <p:column headerText="Director">
-                                        <p:outputLabel value=""/>   
-                                    </p:column>
-
-                                    <p:column headerText="Clasificación">
-                                        <p:outputLabel value=""/>   
-                                    </p:column>
+                                    
 
                                     <p:column headerText="Modificar">
-                                        <p:commandButton id="btnEditarPelicula" value="Editar" />  
+                                        <p:commandButton id="btnEditarPelicula" value="Editar" 
+                                                         actionListener="#{peliculaFormBean.asignarPelicula(p)}" 
+                                                         oncomplete="PF('modificarPelicula').show()"/>  
                                     </p:column>
 
                                 </p:dataTable>
@@ -45,44 +42,58 @@
                             </p:panel>
                         </h:form>
 
-                        <h:form>
+                        <h:form id="cargaPelicula">
                             <p:dialog widgetVar="cargarPelicula" modal="true">
-
+                                <p:growl id="growl" showDetail="true" sticky="false"/>
                                 <p:panel header="Alta Película" footer="Sistema de Cine - 2018" style="width:600px;">
                                     <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
                                                  style="border:none;margin:0 auto;width:500px;">
 
                                         <p:outputLabel for="txtPelicula" value="Nombre:"/>
-                                        <p:inputText id="txtPelicula" required="true"/>
+                                        <p:inputText id="txtPelicula" required="true" value="#{peliculaFormBean.peliculaBean.pelicula.pelNombre}"/>
 
                                         <p:outputLabel for="txtDescripcion" value="Descripcion:"/>
-                                        <p:inputText id="txtDescripcion" required="true"/>
+                                        <p:inputText id="txtDescripcion" required="true" value="#{peliculaFormBean.peliculaBean.pelicula.pelDescripcion}"/>
 
-                                        <p:outputLabel value="Director:"/>
-                                        <p:selectOneMenu>
-                                            <f:selectItem itemValue="Director 1" itemLabel="Director1"/> 
-
-                                        </p:selectOneMenu>
-
-                                        <p:outputLabel value="Clasificación:"/>
-                                        <p:selectOneMenu>
-                                            <f:selectItem itemValue="Clasificacion 1" itemLabel="Clasificacion1"/> 
-
-                                        </p:selectOneMenu>
                                         <h:panelGroup/>
-                                        <p:commandButton id="btnGuardarPel" value="Agregar Película" update=""
-                                                         oncomplete="PF('cargarPelicula').hide()"/>
+                                        <p:commandButton id="btnGuardarPel" value="Agregar Película" 
+                                                         update=":cargaPelicula:growl,:ListaPeliculas"
+                                                         oncomplete="PF('cargarPelicula').hide()"
+                                                         actionListener="#{peliculaFormBean.agregarPelicula()}"/>
                                     </h:panelGrid>
                                 </p:panel>  
                             </p:dialog>
                         </h:form> 
+                        
+                         <h:form id="modPelicula">
+                            <p:dialog widgetVar="modificarPelicula" modal="true">
+                               
+                                <p:panel header="Modificar Película"  style="width:600px;">
+                                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
+                                                 style="border:none;margin:0 auto;width:500px;">
 
+                                        <p:outputLabel for="txtPelicula1" value="Nombre:"/>
+                                        <p:inputText id="txtPelicula1" required="true" value="#{peliculaFormBean.peliculaBean.pelicula.pelNombre}"
+                                                     placeholder="111"/>
+
+                                        <p:outputLabel for="txtDescripcion1" value="Descripcion:"/>
+                                        <p:inputText id="txtDescripcion1" required="true" value="#{peliculaFormBean.peliculaBean.pelicula.pelDescripcion}"/>
+
+                                        <h:panelGroup/>
+                                        <p:commandButton id="btnGuardarPel1" value="Modificar Película" 
+                                                         update=":cargaPelicula:growl,:ListaPeliculas"
+                                                         oncomplete="PF('modificarPelicula').hide()"
+                                                         actionListener="#{peliculaFormBean.modificarPelicula()}"/>
+                                    </h:panelGrid>
+                                </p:panel>  
+                            </p:dialog>
+                        </h:form> 
+                        
                     </div>
 
                 </div>
             </ui:define>
         </ui:composition>
-
     </h:body>
 </html>
 

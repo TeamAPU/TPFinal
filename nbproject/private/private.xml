@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/datos/hibernate/mapeos/Perfiles.hbm.xml</file>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/datos/hibernate/mapeos/Clasificaciones.hbm.xml</file>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/modelo/dominio/Clasificacion.java</file>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/web/Administracion/altaClasificacion.xhtml</file>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/controlador/beans/form/PerfilFormBean.java</file>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/controlador/beans/ClasificacionBean.java</file>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/hibernate/dao/IClasificacionDAO.java</file>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/hibernate/dao/imp/ClasificacionDAOImp.java</file>
-            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/controlador/beans/form/ClasificacionFormBean.java</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/datos/hibernate/mapeos/Carteleras.hbm.xml</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/datos/hibernate/configuracion/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/controlador/beans/CarteleraBean.java</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/hibernate/dao/ISalaDAO.java</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/controlador/beans/form/SalaFormBean.java</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/hibernate/dao/imp/PerfilDAOImp.java</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/hibernate/dao/ICarteleraDAO.java</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/controlador/beans/form/CarteleraFormBean.java</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/web/Administracion/altaCartelera.xhtml</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/controlador/beans/SalaBean.java</file>
+            <file>file:/C:/Users/Ma%20Ry%20Youkai/Documents/NetBeansProjects/probemosaca/TPFINAL_PV2018_G23-master/src/java/aplicacion/hibernate/dao/imp/CarteleraDAOImp.java</file>
         </group>
     </open-files>
 </project-private>

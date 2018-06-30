@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="aplicacion.modelo.dominio.PelAct" table="pel_act" catalog="cine" optimistic-lock="version">
+        <id name="paCodigo" type="java.lang.Integer">
+            <column name="pa_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="actores" class="aplicacion.modelo.dominio.Actor" fetch="join">
+            <column name="pa_actor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="peliculas" class="aplicacion.modelo.dominio.Pelicula" fetch="join">
+            <column name="pa_pelicula" not-null="true" />
+        </many-to-one>
+        <property name="paEstado" type="boolean">
+            <column name="pa_estado" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

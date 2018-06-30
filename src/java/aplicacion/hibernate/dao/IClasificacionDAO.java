@@ -5,7 +5,9 @@
  */
 package aplicacion.hibernate.dao;
 
+
 import aplicacion.modelo.dominio.Clasificacion;
+import java.util.List;
 
 /**
  *
@@ -21,4 +23,10 @@ public interface IClasificacionDAO {
 
     void agregar(Clasificacion clasificacion);
 
+    /**
+     *
+     * @return
+     */
+    public List<Clasificacion> obtenerTodos();
+       
 }

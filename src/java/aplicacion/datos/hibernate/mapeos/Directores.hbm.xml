@@ -6,7 +6,7 @@
     <class name="aplicacion.modelo.dominio.Director" table="directores" catalog="cine" optimistic-lock="version">
         <id name="dirCodigo" type="java.lang.Integer">
             <column name="dir_codigo" />
-            <generator class="identity" />
+            <generator class="increment" />
         </id>
         <property name="dirApellidos" type="string">
             <column name="dir_apellidos" length="45" not-null="true" />

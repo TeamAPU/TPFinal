@@ -19,28 +19,58 @@
                         <p:panelGrid >
                             <p:column style="width: 310px">
                                 <p:panel id="salas" header="Salas" toggleable="true">
-                                    <h:panelGrid columns="1" cellpadding="1">
-                                        <p:commandButton value="Sala 1"/>
-                                        <p:commandButton value="Sala 2"/>
-                                        <p:commandButton value="Sala 3"/>
-                                    </h:panelGrid>
+                                    <h:form id="frmSala">
+                                        <h:panelGrid columns="1" cellpadding="1">
+                                            <p:commandButton value="Sala 1" actionListener="#{carteleraFormBean.filtroSala1()}"
+                                                             update=":ListaCartelera"/>
+                                            <p:commandButton value="Sala 2" actionListener="#{carteleraFormBean.filtroSala2()}"
+                                                             update=":ListaCartelera"/>
+                                            <p:commandButton value="Sala 3" actionListener="#{carteleraFormBean.filtroSala3()}"
+                                                             update=":ListaCartelera"/>
+                                        </h:panelGrid>
+                                    </h:form>
+                                   
                                 </p:panel>
                                 <p:panel id="horario" header="Horario" toggleable="true">
                                     <h:panelGrid columns="1" cellpadding="1">
 
+                                        <h:form id="frmHorario">
+                                            <h:panelGrid columns="1" style="margin-bottom: 10px">
+                                                <h:outputText id="displayRange" value="Deste 0hs hasta 24hs" />
+                                                <p:slider for="txt6,txt7" display="displayRange" style="width: 250px" range="true" 
+                                                          displayTemplate="Desde {min}hs hasta {max}hs" minValue="0" maxValue="24">
+                                                    <p:ajax process="@this" listener="#{carteleraFormBean.filtroHorario()}" 
+                                                            update=":ListaCartelera" />  
+                                                </p:slider>
 
-                                        <h:panelGrid columns="1" style="margin-bottom: 10px">
-                                            <h:outputText id="displayRange" value="Deste 0hs hasta 24hs" />
-                                            <p:slider for="txt6,txt7" display="displayRange" style="width: 250px" range="true" displayTemplate="Desde {min}hs hasta {max}hs" minValue="0" maxValue="24"/>
-                                        </h:panelGrid>
-                                        <h:inputHidden id="txt6" value="1" />
-                                        <h:inputHidden id="txt7" value="24" />
+                                            </h:panelGrid>
+                                        </h:form>
+                                        
+                                        <h:inputHidden id="txt6" value="#{carteleraFormBean.horario1}" />
+                                        <h:inputHidden id="txt7" value="#{carteleraFormBean.horario2}" />
                                     </h:panelGrid>
                                 </p:panel>
                                 <p:panel id="Dia" header="Dia" toggleable="true">
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <p:calendar/>
+                                    <h:form id="frmDia">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                        <p:calendar value="#{carteleraFormBean.filtroFecha}"  pattern="yyyy/mm/dd" >
+                                          <p:ajax  event="dateSelect" listener="#{carteleraFormBean.filtroporFecha()}"
+                                                update=":ListaCartelera,:frmDia"/>
+                                        </p:calendar>
+                                            <p:outputLabel value="#{carteleraFormBean.fechita}"/>
+                                             <p:outputLabel value="#{carteleraFormBean.fechita2}"/>
+                                      
                                     </h:panelGrid>
+                                    </h:form>
+                                    
+                                </p:panel>
+                                
+                                <p:panel id="limpiar"  toggleable="true">
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <p:commandButton value="Limpiar Busqueda" actionListener="#{carteleraFormBean.llenarCartelera()}"
+                                                         update=":ListaCartelera"/>
+                                    </h:panelGrid>
+                                    
                                 </p:panel>
                             </p:column>
 
@@ -48,7 +78,7 @@
 
                                 <h:form id="ListaCartelera">
                                     <p:panel header="Cartelera" footer="Sistema de Cine - 2018" style="width:900px;">
-                                        <p:dataTable id="listCartelera" value="#{carteleraFormBean.obtenerCarteleras()}" var="c">
+                                        <p:dataTable id="listCartelera" value="#{carteleraFormBean.carteleras}" var="c">
                                             <p:column headerText="Fecha">
                                                 <p:outputLabel value="#{c.carFecha}"/>   
                                             </p:column>

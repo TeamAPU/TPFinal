@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IPerfilDAO {
 
-    public void agregar(Perfil perfil);
+    void agregar(Perfil perfil);
 
-    public List<Perfil> obtenerTodos();
+    List<Perfil> obtenerTodos();
 }

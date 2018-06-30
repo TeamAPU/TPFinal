@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2018 00:06:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.modelo.dominio.Actor" table="actores" catalog="cine" optimistic-lock="version">
+        <id name="actCodigo" type="java.lang.Integer">
+            <column name="act_codigo" />
+            <generator class="identity" />
+        </id>
+        <property name="actApellidos" type="string">
+            <column name="act_apellidos" length="45" not-null="true" />
+        </property>
+        <property name="actNombres" type="string">
+            <column name="act_nombres" length="45" not-null="true" />
+        </property>
+        <property name="actEstado" type="boolean">
+            <column name="act_estado" not-null="true" />
+        </property>
+
+    </class>
+</hibernate-mapping>

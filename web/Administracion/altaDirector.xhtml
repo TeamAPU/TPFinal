@@ -9,57 +9,90 @@
     </h:head>
     <h:body>
         <p:growl id="growl" showDetail="false" sticky="false"/>
-        
-         <ui:composition template="./../templates/template.xhtml">
+
+        <ui:composition template="./../templates/template.xhtml">
             <ui:define name="content">
                 <div id="tooplate_main">
                     <div>
                         <h:form id="ListaDirector">
-            <p:panel header="Director" footer="Sistema de Cine - 2018" style="width:900px;">
-                <p:dataTable id="listDirector">
-                    <p:column headerText="Apellido">
-                        <p:outputLabel value=""/>   
-                    </p:column>
+                            <p:panel header="Director" footer="Sistema de Cine - 2018" style="width:900px;">
+                                <p:dataTable id="listDirector"
+                                             value="#{directorFormBean.directores}" var="d">
+                                    <p:column headerText="Apellido">
+                                        <p:outputLabel value="#{d.dirApellidos}"/>   
+                                    </p:column>
 
-                    <p:column headerText="Nombre">
-                        <p:outputLabel value=""/>   
-                    </p:column>
+                                    <p:column headerText="Nombre">
+                                        <p:outputLabel value="#{d.dirNombres}"/>   
+                                    </p:column>
+                                    
+                                    <p:column headerText="Modificar">
+                                        <p:commandButton id="btnEditar" value="Editar" 
+                                                         actionListener="#{directorFormBean.asignarDirector(d)}"
+                                                         oncomplete="PF('modificarDirector').show()"/>
+                                    </p:column>
 
-                </p:dataTable>
-                <p:commandButton value="Cargar Director" oncomplete="PF('cargarDirector').show()"/>
-            </p:panel>
-        </h:form>
+                                </p:dataTable>
+                                <p:commandButton value="Cargar Director" oncomplete="PF('cargarDirector').show()"/>
+                            </p:panel>
+                        </h:form>
 
 
 
-        <h:form>
-            <p:dialog widgetVar="cargarDirector" modal="true">
+                        <h:form id="cargaDirector">
+                            <p:dialog widgetVar="cargarDirector" modal="true">
 
+                                <p:growl id="mensajeGeneral" showDetail="true" sticky="false" autoUpdate="true"/>
+                                <p:panel header="Alta Director" footer="Sistema de Cine - 2018" style="width:600px;">
+                                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
+                                                 style="border:none;margin:0 auto;width:500px;">
 
-                <p:panel header="Alta Director" footer="Sistema de Cine - 2018" style="width:600px;">
-                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
-                                 style="border:none;margin:0 auto;width:500px;">
+                                        <p:outputLabel for="txtApellidoDir" value="Apellido:"/>
+                                        <p:inputText id="txtApellidoDir" required="true" value="#{directorFormBean.directorBean.director.dirApellidos}"/>
 
-                        <p:outputLabel for="txtApellidoDir" value="Apellido:"/>
-                        <p:inputText id="txtApellidoDir" required="true"/>
+                                        <p:outputLabel for="txtNombreDir" value="Nombre:"/>
+                                        <p:inputText id="txtNombreDir"  required="true" value="#{directorFormBean.directorBean.director.dirNombres}"/>
 
-                        <p:outputLabel for="txtNombreDir" value="Nombre:"/>
-                        <p:inputText id="txtNombreDir"  required="true"/>
+                                        <h:panelGroup/>
+                                        <p:commandButton id="btnGuardarDir" value="Agregar Director" 
+                                                         oncomplete="PF('cargarDirector').hide()"
+                                                         actionListener="#{directorFormBean.agregarDirector(directorFormBean.directorBean.director)}"
+                                                         update=":cargaDirector:mensajeGeneral,:ListaDirector"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:dialog>
+                        </h:form>
+                        
+                         <h:form id="modDirector">
+                            <p:dialog widgetVar="modificarDirector" modal="true">
 
-                        <h:panelGroup/>
-                        <p:commandButton id="btnGuardarDir" value="Agregar Director" update=""
-                                         oncomplete="PF('cargarDirector').hide()"/>
-                    </h:panelGrid>
-                </p:panel>
-            </p:dialog>
-        </h:form>
+                                
+                                <p:panel header="Modificar Director" footer="Sistema de Cine - 2018" style="width:600px;">
+                                    <h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid"
+                                                 style="border:none;margin:0 auto;width:500px;">
+
+                                        <p:outputLabel for="txtApellidoDir1" value="Apellido:"/>
+                                        <p:inputText id="txtApellidoDir1" required="true" value="#{directorFormBean.directorBean.director.dirApellidos}"/>
+
+                                        <p:outputLabel for="txtNombreDir1" value="Nombre:"/>
+                                        <p:inputText id="txtNombreDir1"  required="true" value="#{directorFormBean.directorBean.director.dirNombres}"/>
+
+                                        <h:panelGroup/>
+                                        <p:commandButton id="btnModDir" value="Modificar Director" 
+                                                         oncomplete="PF('modificarDirector').hide()"
+                                                         actionListener="#{directorFormBean.modificarDirector()}"
+                                                         update=":cargaDirector:mensajeGeneral,:ListaDirector"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:dialog>
+                        </h:form>
 
                     </div>
-                  
+
                 </div>
             </ui:define>
         </ui:composition>
 
-           </h:body>
+    </h:body>
 </html>
 

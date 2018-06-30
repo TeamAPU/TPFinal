@@ -5,8 +5,11 @@
  */
 package aplicacion.controlador.beans;
 
+import aplicacion.hibernate.dao.IClasificacionDAO;
+import aplicacion.hibernate.dao.imp.ClasificacionDAOImp;
 import aplicacion.modelo.dominio.Clasificacion;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -27,6 +30,17 @@ public class ClasificacionBean implements Serializable {
         clasificacion = new Clasificacion();
     }
 
+    
+     public void modificar() {
+        IClasificacionDAO directorDAO = new ClasificacionDAOImp();
+        directorDAO.modificar(clasificacion);
+    }
+    
+    public List<Clasificacion> obtenerClasificacion() {
+        IClasificacionDAO clasificacionDAO = new ClasificacionDAOImp();
+        return clasificacionDAO.obtenerTodos();
+    }
+    
     public Clasificacion getClasificacion() {
         return clasificacion;
     }

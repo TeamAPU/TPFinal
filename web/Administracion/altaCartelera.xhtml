@@ -18,7 +18,7 @@
                     <div>
                         <h:form id="ListaCartelera">
                             <p:panel header="Cartelera" footer="Sistema de Cine - 2018" style="width:900px;">
-                                <p:dataTable id="listCartelera" value="#{carteleraFormBean.obtenerCarteleras()}" var="c">
+                                <p:dataTable id="listCartelera" value="#{carteleraFormBean.carteleras}" var="c">
                                     <p:column headerText="Fecha">
                                         <p:outputLabel value="#{c.carFecha}"/>   
                                     </p:column>
@@ -57,33 +57,36 @@
                                                  style="border:none;margin:0 auto;width:500px;">
 
                                         <p:outputLabel value="Fecha:"/>
-                                        <p:inputText id="txtFecha" />
+                                        <p:calendar value="#{carteleraFormBean.carteleraBean.cartelera.carFecha}"/>
 
                                         <p:outputLabel for="txtHorario" value="Horario:"/>
-                                        <p:inputText id="txtHorario" required="true"/>
+                                        <p:inputText id="txtHorario" required="true" value="#{carteleraFormBean.carteleraBean.cartelera.carHorario}"/>
 
                                         <p:outputLabel for="txtPrecio" value="Precio:"/>
-                                        <p:inputText id="txtPrecio" required="true"/>
+                                        <p:inputText id="txtPrecio" required="true"
+                                                     value="#{carteleraFormBean.carteleraBean.cartelera.carPrecio}"/>
 
                                         <p:outputLabel  value="Sala:"/>
-                                        <p:selectOneMenu>
-                                            <f:selectItem itemValue="Sala 1" itemLabel="Sala1"/> 
+                                        <p:selectOneMenu >
+                                            <f:selectItem itemValue="1" itemLabel="Sala1"/> 
+                                            <f:selectItem itemValue="2" itemLabel="Sala2"/> 
+                                            <f:selectItem itemValue="3" itemLabel="Sala3"/> 
                                         </p:selectOneMenu>
 
 
                                         <p:outputLabel  value="Pelicula:"/>
-                                        <p:selectOneMenu>
-                                            <f:selectItem itemValue="Pelicula 1" itemLabel="Pelicula1"/> 
+                                        <p:selectOneMenu  value="#{carteleraFormBean.carteleraBean.cartelera.peliculas}">
+                                            <f:selectItems value="#{peliculaFormBean.peliculas}" var="pel"
+                                                           itemValue="#{pel}"  itemLabel="#{pel.pelNombre}"/> 
                                         </p:selectOneMenu>
 
-                                        <p:outputLabel for="txtPrecioCar" value="Precio:"/>
-                                        <p:inputText id="txtPrecioCar" required="true"/>
+                                       
 
 
 
                                         <h:panelGroup/>
                                         <p:commandButton id="btnGuardarDir" value="Agregar Cartelera" update=""
-                                                         oncomplete="PF('cargarCartelera').hide()"/>
+                                                         oncomplete="PF('cargarCartelera').hide()" actionListener="#{carteleraFormBean.agregar()}"/>
                                     </h:panelGrid>
                                 </p:panel> 
                             </p:dialog>

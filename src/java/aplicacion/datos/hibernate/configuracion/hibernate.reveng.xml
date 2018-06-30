@@ -43,4 +43,8 @@ Contributor(s):
   <schema-selection match-catalog="cine"/>
   <table-filter match-name="usuarios"/>
   <table-filter match-name="perfiles"/>
+  <table-filter match-name="directores"/>
+  <table-filter match-name="carteleras"/>
+  <table-filter match-name="clasificaciones"/>
+  <table-filter match-name="salas"/>
 </hibernate-reverse-engineering>
