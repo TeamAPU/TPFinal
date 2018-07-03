@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pelicula" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6e0ede0f-3910-45c1-b3d0-e12c49ff06a5">
+	<property name="ireport.zoom" value="1.210000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<field name="peliculas.pelNombre" class="java.lang.String"/>
+	<field name="peliculas.pelDescripcion" class="java.lang.String"/>
+	<field name="carFecha" class="java.util.Date"/>
+	<field name="carHorario" class="java.lang.String"/>
+	<field name="salas.salNombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<image>
+				<reportElement x="456" y="0" width="99" height="132" uuid="d25c8952-bacc-43db-93b6-663d7bb549e5"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="bd671606-f672-4eeb-b9ee-8c3bb4eda867"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="b9419e68-3d36-41a3-9b50-7063e728ac1c"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="5b9f945b-1e73-4e32-8867-f2913f32976c"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="bbbc88de-38f7-4762-89f4-00f0c4ac8353"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="b38d6798-3b9c-4afa-b032-57462b439db4"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="6" width="100" height="20" uuid="95676d8b-efda-4463-9886-99a6f0ea50b8"/>
+				<text><![CDATA[peliculas.pelNombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="1" width="100" height="20" uuid="f10b2005-e84e-4235-8d9d-6ca2ae5bae5d"/>
+				<text><![CDATA[peliculas.pelDescripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="0" width="100" height="20" uuid="1c254137-8de0-49be-acc6-b176a7efc3b2"/>
+				<text><![CDATA[carFecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="100" height="20" uuid="5b33b9dd-2b0b-488a-812a-606e51ea692a"/>
+				<text><![CDATA[carHorario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="1" width="100" height="20" uuid="74fc60c6-cf75-4158-a5df-67be28e71370"/>
+				<text><![CDATA[salas.salNombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="20" uuid="aab86d49-de59-4635-b3c3-f3ca5b5410c9"/>
+				<textFieldExpression><![CDATA[$F{peliculas.pelNombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="10" width="100" height="20" uuid="8b189f34-62d0-4890-a91a-164670adb4d5"/>
+				<textFieldExpression><![CDATA[$F{peliculas.pelDescripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="10" width="100" height="20" uuid="5d29ce66-22f7-4346-88e0-58970bc61b3e"/>
+				<textFieldExpression><![CDATA[$F{carFecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="10" width="100" height="20" uuid="7856367f-22e7-4624-bd14-7745fed53ecc"/>
+				<textFieldExpression><![CDATA[$F{carHorario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="10" width="100" height="20" uuid="76738e96-23c8-43e3-87bd-c3ca336e08f4"/>
+				<textFieldExpression><![CDATA[$F{salas.salNombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="32" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="5d18d519-1506-4260-870b-f4b14d90e150"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="1245ac4f-6216-48a9-a519-15e2cede9f31"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4d06df80-b33d-4bcd-bd7d-bd034c15b580"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="4140a0a8-a6f9-4613-9395-beed6d8b3f26"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="147f97ed-9b0a-44fd-8d3a-4afdb0b561a7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
